@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_type": "stegtalk_wiki_migration_receipt",
+  "repo": "StegVerse-Labs/stegtalk-wiki",
+  "source_repo": "StegVerse-Labs/StegTalk",
+  "production_ready": false,
+  "installed_files": [
+    "STEGTALK_WIKI_MIRROR_HANDOFF.md",
+    "README.md",
+    "pages/message-lifecycle.md",
+    "pages/contact-routing.md",
+    "pages/local-inbox-and-store.md",
+    "pages/public-discovery.md",
+    "pages/shell-runtime.md",
+    "pages/account-runtime.md",
+    "pages/wiki-overlap-map.md",
+    "data/page-index.json"
+  ],
+  "manual_tasks_remaining": [],
+  "next_task": "update_source_repo_wiki_status"
+}
