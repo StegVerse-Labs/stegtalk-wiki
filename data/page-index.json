@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "index_type": "stegtalk_wiki_page_index",
+  "repo": "StegVerse-Labs/stegtalk-wiki",
+  "source_repo": "StegVerse-Labs/StegTalk",
+  "production_ready": false,
+  "pages": [
+    {"title": "Message Lifecycle", "path": "pages/message-lifecycle.md", "status": "installed"},
+    {"title": "Contact Routing", "path": "pages/contact-routing.md", "status": "installed"},
+    {"title": "Local Inbox and Store", "path": "pages/local-inbox-and-store.md", "status": "installed"},
+    {"title": "Public Discovery", "path": "pages/public-discovery.md", "status": "installed"},
+    {"title": "Shell Runtime", "path": "pages/shell-runtime.md", "status": "installed"},
+    {"title": "Account Runtime", "path": "pages/account-runtime.md", "status": "installed"},
+    {"title": "Wiki Overlap Map", "path": "pages/wiki-overlap-map.md", "status": "installed"}
+  ],
+  "linked_wikis": [
+    "StegVerse-002/stegguardian-wiki",
+    "StegVerse-Labs/admissibility-wiki",
+    "StegVerse-Labs/Site"
+  ]
+}
