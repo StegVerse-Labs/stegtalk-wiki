@@ -1,0 +1,69 @@
+name: Publish StegTalk Wiki
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Prepare static site
+        run: |
+          mkdir -p _site/pages _site/data _site/receipts
+          cp README.md _site/README.md
+          cp data/page-index.json _site/data/page-index.json
+          cp receipts/wiki-migration-receipt.json _site/receipts/wiki-migration-receipt.json
+          cp pages/*.md _site/pages/
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>StegTalk Wiki</title>
+            <style>body{font-family:system-ui,-apple-system,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;line-height:1.55}a{display:block;margin:.35rem 0}code{background:#f4f4f4;padding:.1rem .25rem}</style>
+          </head>
+          <body>
+            <h1>StegTalk Wiki</h1>
+            <p>StegTalk-owned runtime and product documentation.</p>
+            <h2>Pages</h2>
+            <a href="pages/message-lifecycle.md">Message Lifecycle</a>
+            <a href="pages/contact-routing.md">Contact Routing</a>
+            <a href="pages/local-inbox-and-store.md">Local Inbox and Store</a>
+            <a href="pages/public-discovery.md">Public Discovery</a>
+            <a href="pages/shell-runtime.md">Shell Runtime</a>
+            <a href="pages/account-runtime.md">Account Runtime</a>
+            <a href="pages/wiki-overlap-map.md">Wiki Overlap Map</a>
+            <h2>Machine-readable records</h2>
+            <a href="data/page-index.json">Page Index</a>
+            <a href="receipts/wiki-migration-receipt.json">Migration Receipt</a>
+            <h2>Linked Wikis</h2>
+            <a href="https://stegverse-002.github.io/stegguardian-wiki/">StegGuardian Wiki</a>
+            <a href="https://stegverse-labs.github.io/admissibility-wiki/">Admissibility Wiki</a>
+            <a href="https://stegverse-labs.github.io/Site/">StegVerse Site</a>
+          </body>
+          </html>
+          HTML
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
