@@ -2,6 +2,10 @@
 
 StegTalk owns product and runtime behavior documentation.
 
+## Org Boundary Note
+
+StegTalk wiki is intentionally published from `StegVerse-Labs/stegtalk-wiki` because it documents product and runtime behavior. StegGuardian wiki is intentionally published from `StegVerse-002/stegguardian-wiki` because Guardian documentation belongs to the governed-entity org boundary. The split is deliberate and should not be interpreted as an orphaned or drifted repo.
+
 ## Pages
 
 - [Message Lifecycle](pages/message-lifecycle.md)
