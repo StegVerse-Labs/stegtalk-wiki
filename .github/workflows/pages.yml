@@ -23,13 +23,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Validate documentation mesh
+        run: python scripts/check_documentation_mesh.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Prepare static site
         run: |
           mkdir -p _site/pages _site/data _site/receipts
+          touch _site/.nojekyll
           cp README.md _site/README.md
           cp data/page-index.json _site/data/page-index.json
+          cp data/ecosystem-documentation-endpoints.json _site/data/ecosystem-documentation-endpoints.json
+          cp data/cross-wiki-health-status.json _site/data/cross-wiki-health-status.json
           cp receipts/wiki-migration-receipt.json _site/receipts/wiki-migration-receipt.json
           cp pages/*.md _site/pages/
           cat > _site/index.html <<'HTML'
@@ -54,6 +59,8 @@ jobs:
             <a href="pages/wiki-overlap-map.md">Wiki Overlap Map</a>
             <h2>Machine-readable records</h2>
             <a href="data/page-index.json">Page Index</a>
+            <a href="data/ecosystem-documentation-endpoints.json">Ecosystem Documentation Endpoints</a>
+            <a href="data/cross-wiki-health-status.json">Cross-Wiki Health Status</a>
             <a href="receipts/wiki-migration-receipt.json">Migration Receipt</a>
             <h2>Linked Wikis</h2>
             <a href="https://stegverse-002.github.io/stegguardian-wiki/">StegGuardian Wiki</a>
