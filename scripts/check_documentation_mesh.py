@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "data" / "ecosystem-documentation-endpoints.json"
 HEALTH = ROOT / "data" / "cross-wiki-health-status.json"
+COMPLETION = ROOT / "data" / "wiki-completion-status.json"
 EXPECTED_ENDPOINTS = {
     "stegverse-site": ("StegVerse-Labs/Site", "https://stegverse-labs.github.io/Site/"),
     "admissibility-wiki": ("StegVerse-Labs/admissibility-wiki", "https://stegverse-labs.github.io/admissibility-wiki/"),
@@ -27,6 +28,7 @@ def main() -> int:
     errors: list[str] = []
     registry = load_json(REGISTRY, errors, "endpoint_registry")
     health = load_json(HEALTH, errors, "health_status")
+    completion = load_json(COMPLETION, errors, "completion_status")
 
     if registry.get("record_type") != "stegverse_ecosystem_documentation_endpoints":
         errors.append("endpoint_registry_type_mismatch")
@@ -64,6 +66,26 @@ def main() -> int:
     ):
         if checks.get(key) is not False:
             errors.append("check_must_remain_false_until_verified:" + key)
+
+    if completion.get("record_type") != "stegtalk_wiki_completion_status":
+        errors.append("completion_record_type_mismatch")
+    if completion.get("repo") != "StegVerse-Labs/stegtalk-wiki":
+        errors.append("completion_repo_mismatch")
+    if completion.get("public_url") != "https://stegverse-labs.github.io/stegtalk-wiki/":
+        errors.append("completion_public_url_mismatch")
+    completion_values = completion.get("completion", {})
+    for key in (
+        "publishing_automation",
+        "page_indexing",
+        "documentation_mesh_registry",
+        "cross_wiki_health_scaffolding",
+        "substantive_page_expansion",
+        "page_level_evidence_notes",
+        "overall_repo_goal",
+    ):
+        value = completion_values.get(key)
+        if not isinstance(value, int) or not 0 <= value <= 100:
+            errors.append("invalid_completion_value:" + key)
 
     if errors:
         print("STEGTALK DOCUMENTATION MESH: FAIL - " + ", ".join(errors))
