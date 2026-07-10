@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1.0",
+  "record_type": "stegtalk_wiki_completion_status",
+  "repo": "StegVerse-Labs/stegtalk-wiki",
+  "observed_at": "2026-07-10",
+  "public_url": "https://stegverse-labs.github.io/stegtalk-wiki/",
+  "status": "published_structural_documentation",
+  "completion": {
+    "publishing_automation": 100,
+    "page_indexing": 100,
+    "documentation_mesh_registry": 100,
+    "cross_wiki_health_scaffolding": 100,
+    "substantive_page_expansion": 45,
+    "page_level_evidence_notes": 20,
+    "overall_repo_goal": 72
+  },
+  "installed_records": [
+    "data/page-index.json",
+    "data/ecosystem-documentation-endpoints.json",
+    "data/cross-wiki-health-status.json",
+    "receipts/wiki-migration-receipt.json"
+  ],
+  "remaining_work": [
+    "expand structural pages into substantive prose",
+    "add page-level evidence and provenance notes",
+    "verify linked-wiki origin explanations render publicly",
+    "confirm peer machine-readable records"
+  ],
+  "non_claims": {
+    "production_ready": false,
+    "all_pages_substantive": false,
+    "peer_machine_records_verified": false,
+    "standing_conferred": false,
+    "execution_authority": false
+  }
+}
