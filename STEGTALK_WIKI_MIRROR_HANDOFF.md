@@ -6,9 +6,11 @@ This file is the current handoff and task source of truth for `StegVerse-Labs/st
 
 ## Current Priority
 
-StegTalk-owned runtime documentation has been installed, indexed, receipted, and wired for autonomous GitHub Pages publishing.
+StegTalk-owned runtime documentation is installed, indexed, receipted, and wired for autonomous GitHub Pages publishing.
 
-Next priority: make the public wiki mesh self-explaining before expanding page content.
+The public wiki mesh is now self-describing through a canonical four-node endpoint registry, StegTalk cross-wiki health status, and a machine-readable completion/status receipt.
+
+Next priority: expand structural pages into substantive prose and add page-level evidence/provenance notes.
 
 ## Source
 
@@ -29,11 +31,35 @@ Source package: `StegVerse-Labs/StegTalk/wiki-staging`
 - `pages/account-runtime.md`
 - `pages/wiki-overlap-map.md`
 - `data/page-index.json`
+- `data/ecosystem-documentation-endpoints.json`
+- `data/cross-wiki-health-status.json`
+- `data/wiki-completion-status.json`
+- `scripts/check_documentation_mesh.py`
 - `receipts/wiki-migration-receipt.json`
 
 ## Publishing Automation Complete
 
 - `.github/workflows/pages.yml`
+- validates `scripts/check_documentation_mesh.py`
+- publishes endpoint registry, cross-wiki health status, completion status, page index, pages, and migration receipt
+- writes `_site/.nojekyll`
+
+## Documentation Mesh
+
+Canonical endpoints:
+
+- `https://stegverse-labs.github.io/Site/`
+- `https://stegverse-labs.github.io/admissibility-wiki/`
+- `https://stegverse-002.github.io/stegguardian-wiki/`
+- `https://stegverse-labs.github.io/stegtalk-wiki/`
+
+Machine-readable records:
+
+- `data/ecosystem-documentation-endpoints.json`
+- `data/cross-wiki-health-status.json`
+- `data/wiki-completion-status.json`
+
+Current cross-wiki health state remains `pending_live_peer_checks` until peer machine-readable records and schema consistency are externally verified.
 
 ## Linked Wikis
 
@@ -53,7 +79,13 @@ StegTalk wiki pages must not introduce a new local decision-result enum. Any dec
 
 StegTalk remains a non-production local prototype candidate unless a later source artifact explicitly changes that status.
 
-Public page visibility does not create production status, receipt-chain standing, or admissibility.
+Public page visibility, endpoint registration, cross-wiki health records, and completion percentages do not create production status, receipt-chain standing, admissibility, cross-repo authority, or execution authority.
+
+## Verification
+
+```text
+python scripts/check_documentation_mesh.py
+```
 
 ## Remaining Open Check
 
@@ -61,14 +93,18 @@ Public page visibility does not create production status, receipt-chain standing
 StegVerse-Labs/stegtalk-wiki:
   - expand structural pages into substantive prose
   - add page-level evidence/provenance notes
-  - add a machine-readable completion/status receipt
   - verify linked-wiki origin explanations render publicly
-
-StegVerse-002/stegguardian-wiki:
-  - keep org-boundary note aligned with StegTalk and Admissibility wiki references
+  - confirm peer machine-readable records
 
 StegVerse-Labs/admissibility-wiki:
-  - continue canonical enum registry work after the public decision-record boundary clarification
+  - install shared documentation endpoint registry and cross-wiki health record
+  - continue canonical enum registry work after public decision-record boundary clarification
+
+StegVerse-Labs/Site:
+  - install shared documentation endpoint registry and cross-wiki health record after checking SITE_MIRROR_HANDOFF.md
+
+StegVerse-002/stegguardian-wiki:
+  - keep org-boundary note and canonical endpoint registry aligned
 ```
 
 ## Build Rule
