@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stegverse.org/schemas/documentation/cross-wiki-health-status.schema.json",
+  "title": "StegVerse Cross-Wiki Health Status",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "schema_ref",
+    "record_type",
+    "repo",
+    "observed_at",
+    "status",
+    "origin_public_url",
+    "peer_registry",
+    "checks",
+    "next_actions",
+    "non_claims"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "schema_ref": {"const": "data/cross-wiki-health-status.schema.json"},
+    "record_type": {"type": "string", "pattern": "^[a-z0-9_-]+_cross_wiki_health_status$"},
+    "repo": {"type": "string", "minLength": 3},
+    "observed_at": {"type": "string", "minLength": 10},
+    "status": {"enum": ["pending_live_peer_checks", "verified", "degraded", "fail_closed"]},
+    "origin_public_url": {"type": "string", "pattern": "^https://"},
+    "peer_registry": {"const": "data/ecosystem-documentation-endpoints.json"},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "peer_urls_declared",
+        "origin_records_declared",
+        "live_peer_http_confirmed",
+        "peer_machine_records_confirmed",
+        "cross_wiki_schema_consistency_confirmed"
+      ],
+      "properties": {
+        "peer_urls_declared": {"type": "boolean"},
+        "origin_records_declared": {"type": "boolean"},
+        "live_peer_http_confirmed": {"type": "boolean"},
+        "peer_machine_records_confirmed": {"type": "boolean"},
+        "cross_wiki_schema_consistency_confirmed": {"type": "boolean"}
+      }
+    },
+    "next_actions": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "non_claims": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "all_peer_urls_verified",
+        "peer_machine_records_verified",
+        "cross_repo_authority_granted",
+        "standing_conferred",
+        "execution_authority"
+      ],
+      "properties": {
+        "all_peer_urls_verified": {"type": "boolean"},
+        "peer_machine_records_verified": {"type": "boolean"},
+        "cross_repo_authority_granted": {"const": false},
+        "standing_conferred": {"const": false},
+        "execution_authority": {"const": false}
+      }
+    }
+  }
+}
