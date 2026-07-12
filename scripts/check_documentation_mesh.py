@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "data" / "ecosystem-documentation-endpoints.json"
 HEALTH = ROOT / "data" / "cross-wiki-health-status.json"
+HEALTH_SCHEMA = ROOT / "data" / "cross-wiki-health-status.schema.json"
 COMPLETION = ROOT / "data" / "wiki-completion-status.json"
 EXPECTED_ENDPOINTS = {
     "stegverse-site": ("StegVerse-Labs/Site", "https://stegverse-labs.github.io/Site/"),
@@ -28,6 +29,7 @@ def main() -> int:
     errors: list[str] = []
     registry = load_json(REGISTRY, errors, "endpoint_registry")
     health = load_json(HEALTH, errors, "health_status")
+    schema = load_json(HEALTH_SCHEMA, errors, "health_schema")
     completion = load_json(COMPLETION, errors, "completion_status")
 
     if registry.get("record_type") != "stegverse_ecosystem_documentation_endpoints":
@@ -43,6 +45,19 @@ def main() -> int:
         if item.get("url") != url:
             errors.append("endpoint_url_mismatch:" + endpoint_id)
 
+    if schema.get("title") != "StegVerse Cross-Wiki Health Status":
+        errors.append("health_schema_title_mismatch")
+    if schema.get("properties", {}).get("schema_version", {}).get("const") != "1.0.0":
+        errors.append("health_schema_version_mismatch")
+    required = set(schema.get("required", []))
+    for field in ("schema_ref", "peer_registry", "checks", "next_actions", "non_claims"):
+        if field not in required:
+            errors.append("health_schema_missing_required:" + field)
+
+    if health.get("schema_version") != "1.0.0":
+        errors.append("health_schema_version_binding_mismatch")
+    if health.get("schema_ref") != "data/cross-wiki-health-status.schema.json":
+        errors.append("health_schema_ref_mismatch")
     if health.get("record_type") != "stegtalk_cross_wiki_health_status":
         errors.append("health_record_type_mismatch")
     if health.get("repo") != "StegVerse-Labs/stegtalk-wiki":
@@ -66,6 +81,11 @@ def main() -> int:
     ):
         if checks.get(key) is not False:
             errors.append("check_must_remain_false_until_verified:" + key)
+
+    non_claims = health.get("non_claims", {})
+    for key in ("cross_repo_authority_granted", "standing_conferred", "execution_authority"):
+        if non_claims.get(key) is not False:
+            errors.append("health_non_claim_must_remain_false:" + key)
 
     if completion.get("record_type") != "stegtalk_wiki_completion_status":
         errors.append("completion_record_type_mismatch")
