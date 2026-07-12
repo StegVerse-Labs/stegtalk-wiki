@@ -1,8 +1,9 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "1.0.0",
+  "schema_ref": "data/cross-wiki-health-status.schema.json",
   "record_type": "stegtalk_cross_wiki_health_status",
   "repo": "StegVerse-Labs/stegtalk-wiki",
-  "observed_at": "2026-07-10",
+  "observed_at": "2026-07-12",
   "status": "pending_live_peer_checks",
   "origin_public_url": "https://stegverse-labs.github.io/stegtalk-wiki/",
   "peer_registry": "data/ecosystem-documentation-endpoints.json",
@@ -16,7 +17,7 @@
   "next_actions": [
     "confirm peer public URLs respond",
     "confirm each peer exposes the shared endpoint registry",
-    "confirm each peer exposes a cross-wiki health record",
+    "confirm each peer exposes a cross-wiki health record bound to the shared schema",
     "promote reusable checker to repo-standards after multi-repo proof"
   ],
   "non_claims": {
