@@ -8,78 +8,89 @@ This file is the current handoff and task source of truth for `StegVerse-Labs/st
 
 StegTalk-owned runtime documentation is installed, indexed, receipted, and wired for autonomous GitHub Pages publishing.
 
-The public wiki mesh is now self-describing through a canonical four-node endpoint registry, StegTalk cross-wiki health status, and a machine-readable completion/status receipt.
+Current integration goal: prove the shared cross-wiki health contract with StegGuardian, then expand structural pages into substantive prose and page-level evidence notes.
 
-Next priority: expand structural pages into substantive prose and add page-level evidence/provenance notes.
+## Shared Cross-Wiki Health Contract
 
-## Source
+Installed:
 
-Source package: `StegVerse-Labs/StegTalk/wiki-staging`
+```text
+data/cross-wiki-health-status.schema.json
+data/cross-wiki-health-status.json schema_version: 1.0.0
+data/cross-wiki-health-status.json schema_ref: data/cross-wiki-health-status.schema.json
+scripts/check_documentation_mesh.py schema enforcement
+.github/workflows/pages.yml schema publication and public index link
+```
+
+The shared schema requires:
+
+```text
+schema_version
+schema_ref
+record_type
+repo
+observed_at
+status
+origin_public_url
+peer_registry
+checks
+next_actions
+non_claims
+```
+
+StegTalk and StegGuardian now use the same schema identifier and common field contract. `cross_wiki_schema_consistency_confirmed` remains false until successful public workflow evidence confirms both published schema and record URLs.
+
+Latest installation commits:
+
+```text
+fd18595f90508426949a153b16830034dcdf62bd
+43ec4cfb01e412dbf0dcc735e2d6531012236db0
+da3b79b4bf378d7ca261df61bf8b9258cec75a94
+a6afeadc2e9c7f735a076576077659e83cfd77d0
+```
+
+## Session Coordination
+
+No open issue or pull request claims this StegTalk health-schema task.
+
+Site has concurrent active work and must not be modified from this workstream.
+Admissibility-wiki has a separately active Goal 5 workstream and must not be modified from this workstream.
 
 ## Public URL
 
-- `https://stegverse-labs.github.io/stegtalk-wiki/`
+```text
+https://stegverse-labs.github.io/stegtalk-wiki/
+```
 
-## Install Complete
+## Installed Documentation Mesh
 
-- `README.md`
-- `pages/message-lifecycle.md`
-- `pages/contact-routing.md`
-- `pages/local-inbox-and-store.md`
-- `pages/public-discovery.md`
-- `pages/shell-runtime.md`
-- `pages/account-runtime.md`
-- `pages/wiki-overlap-map.md`
-- `data/page-index.json`
-- `data/ecosystem-documentation-endpoints.json`
-- `data/cross-wiki-health-status.json`
-- `data/wiki-completion-status.json`
-- `scripts/check_documentation_mesh.py`
-- `receipts/wiki-migration-receipt.json`
+```text
+README.md
+pages/message-lifecycle.md
+pages/contact-routing.md
+pages/local-inbox-and-store.md
+pages/public-discovery.md
+pages/shell-runtime.md
+pages/account-runtime.md
+pages/wiki-overlap-map.md
+data/page-index.json
+data/ecosystem-documentation-endpoints.json
+data/cross-wiki-health-status.json
+data/cross-wiki-health-status.schema.json
+data/wiki-completion-status.json
+scripts/check_documentation_mesh.py
+receipts/wiki-migration-receipt.json
+.github/workflows/pages.yml
+```
 
-## Publishing Automation Complete
+## Canonical Endpoints
 
-- `.github/workflows/pages.yml`
-- validates `scripts/check_documentation_mesh.py`
-- publishes endpoint registry, cross-wiki health status, completion status, page index, pages, and migration receipt
-- writes `_site/.nojekyll`
-
-## Documentation Mesh
-
-Canonical endpoints:
-
-- `https://stegverse-labs.github.io/Site/`
-- `https://stegverse-labs.github.io/admissibility-wiki/`
-- `https://stegverse-002.github.io/stegguardian-wiki/`
-- `https://stegverse-labs.github.io/stegtalk-wiki/`
-
-Machine-readable records:
-
-- `data/ecosystem-documentation-endpoints.json`
-- `data/cross-wiki-health-status.json`
-- `data/wiki-completion-status.json`
-
-Current cross-wiki health state remains `pending_live_peer_checks` until peer machine-readable records and schema consistency are externally verified.
-
-## Linked Wikis
-
-- `https://stegverse-002.github.io/stegguardian-wiki/`
-- `https://stegverse-labs.github.io/admissibility-wiki/`
-- `https://stegverse-labs.github.io/Site/`
-
-## Org Boundary Rule
-
-StegTalk wiki remains under `StegVerse-Labs` because it documents product and runtime behavior. Guardian wiki remains under `StegVerse-002` because Guardian documentation belongs to the governed-entity org boundary. The split is deliberate and should be explained wherever linked wiki origins are shown.
-
-## Decision Enum Rule
-
-StegTalk wiki pages must not introduce a new local decision-result enum. Any decision/status values must identify their surface, such as runtime execution, wiki governance, interop failure posture, or downstream Guardian status.
-
-## Boundary
-
-StegTalk remains a non-production local prototype candidate unless a later source artifact explicitly changes that status.
-
-Public page visibility, endpoint registration, cross-wiki health records, and completion percentages do not create production status, receipt-chain standing, admissibility, cross-repo authority, or execution authority.
+```text
+https://stegverse-labs.github.io/Site/
+https://stegverse-labs.github.io/admissibility-wiki/
+https://stegverse-002.github.io/stegguardian-wiki/
+https://stegverse-labs.github.io/stegtalk-wiki/
+```
 
 ## Verification
 
@@ -87,30 +98,24 @@ Public page visibility, endpoint registration, cross-wiki health records, and co
 python scripts/check_documentation_mesh.py
 ```
 
+## Boundary
+
+StegTalk remains a non-production local prototype candidate unless a later governed source artifact changes that status.
+
+Public visibility, endpoint registration, shared schemas, health records, and completion percentages do not create production status, receipt-chain standing, admissibility, cross-repo authority, Guardian authority, or execution authority.
+
 ## Remaining Open Check
 
 ```text
-StegVerse-Labs/stegtalk-wiki:
-  - expand structural pages into substantive prose
-  - add page-level evidence/provenance notes
-  - verify linked-wiki origin explanations render publicly
-  - confirm peer machine-readable records
-
-StegVerse-Labs/admissibility-wiki:
-  - install shared documentation endpoint registry and cross-wiki health record
-  - continue canonical enum registry work after public decision-record boundary clarification
-
-StegVerse-Labs/Site:
-  - install shared documentation endpoint registry and cross-wiki health record after checking SITE_MIRROR_HANDOFF.md
-
-StegVerse-002/stegguardian-wiki:
-  - keep org-boundary note and canonical endpoint registry aligned
+confirm StegTalk Pages publishes the shared health schema
+confirm StegGuardian Pages publishes the identical shared health schema
+inspect public schema and health-record evidence before changing consistency flags
+expand structural pages into substantive prose
+add page-level evidence and provenance notes
+roll the shared schema into Site and admissibility-wiki only through their active handoff owners
+promote the reusable schema/checker to repo-standards after multi-repo live proof
 ```
-
-## Build Rule
-
-Before continuing any StegTalk wiki task, check this file first and treat it as the current handoff and task source of truth.
 
 ## Archive Posture
 
-This handoff exists so the complete thread can be archived without losing the current repo state or next task source of truth.
+This handoff contains the current documentation mesh, shared health schema, workflow, boundary, coordination, and continuation state. Earlier conversation context is not required.
