@@ -1,6 +1,7 @@
 name: Publish StegTalk Wiki
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
@@ -11,11 +12,33 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
+  validate:
+    name: Validate sandbox-first readiness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Execute ST-017 sandbox
+        run: |
+          python tools/run_sandbox_validation.py \
+            templates/sandbox-first/stegtalk-wiki.sandbox-profile.json \
+            --output reports/sandbox-first-validation.report.json
+      - name: Upload sandbox evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stegtalk-st017-sandbox-report
+          path: reports/sandbox-first-validation.report.json
+          retention-days: 30
+          if-no-files-found: error
+
   deploy:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
