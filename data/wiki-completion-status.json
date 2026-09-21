@@ -3,7 +3,7 @@
   "record_type": "stegtalk_wiki_completion_status",
   "repo": "StegVerse-Labs/stegtalk-wiki",
   "observed_at": "2026-07-10",
-  "public_url": "https://stegverse-labs.github.io/stegtalk-wiki/",
+  "public_url": "https://stegtalk.stegverse.org/",
   "status": "published_structural_documentation",
   "completion": {
     "publishing_automation": 100,
