@@ -8,9 +8,9 @@ HEALTH_SCHEMA = ROOT / "data" / "cross-wiki-health-status.schema.json"
 COMPLETION = ROOT / "data" / "wiki-completion-status.json"
 EXPECTED_ENDPOINTS = {
     "stegverse-site": ("StegVerse-Labs/Site", "https://stegverse-labs.github.io/Site/"),
-    "admissibility-wiki": ("StegVerse-Labs/admissibility-wiki", "https://stegverse-labs.github.io/admissibility-wiki/"),
-    "stegguardian-wiki": ("StegVerse-002/stegguardian-wiki", "https://stegverse-002.github.io/stegguardian-wiki/"),
-    "stegtalk-wiki": ("StegVerse-Labs/stegtalk-wiki", "https://stegverse-labs.github.io/stegtalk-wiki/"),
+    "admissibility-wiki": ("StegVerse-Labs/admissibility-wiki", "https://admissibility.stegverse.org/"),
+    "stegguardian-wiki": ("StegVerse-002/stegguardian-wiki", "https://stegguardian.stegverse.org/"),
+    "stegtalk-wiki": ("StegVerse-Labs/stegtalk-wiki", "https://stegtalk.stegverse.org/"),
 }
 
 
@@ -62,7 +62,7 @@ def main() -> int:
         errors.append("health_record_type_mismatch")
     if health.get("repo") != "StegVerse-Labs/stegtalk-wiki":
         errors.append("health_repo_mismatch")
-    if health.get("origin_public_url") != "https://stegverse-labs.github.io/stegtalk-wiki/":
+    if health.get("origin_public_url") != "https://stegtalk.stegverse.org/":
         errors.append("health_origin_url_mismatch")
     if health.get("peer_registry") != "data/ecosystem-documentation-endpoints.json":
         errors.append("health_peer_registry_mismatch")
@@ -91,7 +91,7 @@ def main() -> int:
         errors.append("completion_record_type_mismatch")
     if completion.get("repo") != "StegVerse-Labs/stegtalk-wiki":
         errors.append("completion_repo_mismatch")
-    if completion.get("public_url") != "https://stegverse-labs.github.io/stegtalk-wiki/":
+    if completion.get("public_url") != "https://stegtalk.stegverse.org/":
         errors.append("completion_public_url_mismatch")
     completion_values = completion.get("completion", {})
     for key in (
