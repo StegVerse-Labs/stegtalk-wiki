@@ -5,7 +5,7 @@
   "repo": "StegVerse-Labs/stegtalk-wiki",
   "observed_at": "2026-07-12",
   "status": "pending_live_peer_checks",
-  "origin_public_url": "https://stegverse-labs.github.io/stegtalk-wiki/",
+  "origin_public_url": "https://stegtalk.stegverse.org/",
   "peer_registry": "data/ecosystem-documentation-endpoints.json",
   "checks": {
     "peer_urls_declared": true,
