@@ -112,3 +112,8 @@ This handoff contains the current ST-017 adoption, system-AI projection, documen
 Repository Pages source has been corrected from branch-root publication to **GitHub Actions**, matching the existing `.github/workflows/pages.yml` artifact/deploy workflow. The branded custom domain remains `https://stegtalk.stegverse.org/`.
 
 This commit intentionally triggers a fresh main-branch Pages deployment under the corrected source mode. Public completion still requires direct branded-route observation.
+
+
+## 2026-09-21 custom-domain attachment confirmed
+
+GitHub Pages now reports the repository live at `https://stegtalk.stegverse.org/`, with Source = GitHub Actions, DNS check successful, and Enforce HTTPS enabled. This commit triggers a fresh deployment after the branded domain attachment became authoritative.
