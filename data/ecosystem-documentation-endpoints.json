@@ -13,19 +13,19 @@
     {
       "id": "admissibility-wiki",
       "repo": "StegVerse-Labs/admissibility-wiki",
-      "url": "https://stegverse-labs.github.io/admissibility-wiki/",
+      "url": "https://admissibility.stegverse.org/",
       "role": "admissibility_reference"
     },
     {
       "id": "stegguardian-wiki",
       "repo": "StegVerse-002/stegguardian-wiki",
-      "url": "https://stegverse-002.github.io/stegguardian-wiki/",
+      "url": "https://stegguardian.stegverse.org/",
       "role": "guardian_reference"
     },
     {
       "id": "stegtalk-wiki",
       "repo": "StegVerse-Labs/stegtalk-wiki",
-      "url": "https://stegverse-labs.github.io/stegtalk-wiki/",
+      "url": "https://stegtalk.stegverse.org/",
       "role": "communication_reference"
     }
   ],

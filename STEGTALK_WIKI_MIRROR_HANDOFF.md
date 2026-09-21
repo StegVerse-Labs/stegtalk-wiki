@@ -90,7 +90,7 @@ StegTalk and StegGuardian use the same schema identifier and common field contra
 
 ## Public URL
 
-`https://stegverse-labs.github.io/stegtalk-wiki/`
+`https://stegtalk.stegverse.org/`
 
 ## Boundary
 
