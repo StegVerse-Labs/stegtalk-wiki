@@ -90,8 +90,8 @@ jobs:
             <a href="data/wiki-completion-status.json">Wiki Completion Status</a>
             <a href="receipts/wiki-migration-receipt.json">Migration Receipt</a>
             <h2>Linked Wikis</h2>
-            <a href="https://stegverse-002.github.io/stegguardian-wiki/">StegGuardian Wiki</a>
-            <a href="https://stegverse-labs.github.io/admissibility-wiki/">Admissibility Wiki</a>
+            <a href="https://stegguardian.stegverse.org/">StegGuardian Wiki</a>
+            <a href="https://admissibility.stegverse.org/">Admissibility Wiki</a>
             <a href="https://stegverse-labs.github.io/Site/">StegVerse Site</a>
           </body>
           </html>
