@@ -105,3 +105,10 @@ StegTalk remains a non-production documentation/prototype surface unless a later
 ## Archive Posture
 
 This handoff contains the current ST-017 adoption, system-AI projection, documentation mesh, shared health schema, workflow boundary, evidence posture, and continuation state. Earlier conversation context is not required.
+
+
+## 2026-09-21 GitHub Pages source correction
+
+Repository Pages source has been corrected from branch-root publication to **GitHub Actions**, matching the existing `.github/workflows/pages.yml` artifact/deploy workflow. The branded custom domain remains `https://stegtalk.stegverse.org/`.
+
+This commit intentionally triggers a fresh main-branch Pages deployment under the corrected source mode. Public completion still requires direct branded-route observation.
